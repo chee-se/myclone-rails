@@ -5,10 +5,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - db/schema.rb
-    - config/**/*
     - tmp/**/*
-    - Gemfile
-    - vendor/**/*
     - node_modules/**/*
 
 # ネストが深すぎる
