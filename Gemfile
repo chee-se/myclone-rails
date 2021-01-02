@@ -77,5 +77,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', require: false
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
 end
