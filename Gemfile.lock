@@ -67,6 +67,8 @@ GEM
     bcrypt (3.1.16)
     benchmark (0.1.1)
     bindex (0.8.1)
+    binding_of_caller (1.0.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -80,14 +82,62 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    coderay (1.1.3)
     concurrent-ruby (1.1.7)
+    config (2.2.3)
+      deep_merge (~> 1.2, >= 1.2.1)
+      dry-validation (~> 1.0, >= 1.0.0)
     crass (1.0.6)
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.11)
+    debug_inspector (1.0.0)
+    deep_merge (1.2.1)
     diff-lcs (1.4.4)
+    docile (1.3.4)
+    dry-configurable (0.12.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.5, >= 0.5.0)
+    dry-container (0.7.2)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.1, >= 0.1.3)
+    dry-core (0.5.0)
+      concurrent-ruby (~> 1.0)
+    dry-equalizer (0.3.0)
+    dry-inflector (0.2.0)
+    dry-initializer (3.0.4)
+    dry-logic (1.1.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.5, >= 0.5)
+    dry-schema (1.5.6)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.8, >= 0.8.3)
+      dry-core (~> 0.4)
+      dry-equalizer (~> 0.2)
+      dry-initializer (~> 3.0)
+      dry-logic (~> 1.0)
+      dry-types (~> 1.4)
+    dry-types (1.4.0)
+      concurrent-ruby (~> 1.0)
+      dry-container (~> 0.3)
+      dry-core (~> 0.4, >= 0.4.4)
+      dry-equalizer (~> 0.3)
+      dry-inflector (~> 0.1, >= 0.1.2)
+      dry-logic (~> 1.0, >= 1.0.2)
+    dry-validation (1.6.0)
+      concurrent-ruby (~> 1.0)
+      dry-container (~> 0.7, >= 0.7.1)
+      dry-core (~> 0.4)
+      dry-equalizer (~> 0.2)
+      dry-initializer (~> 3.0)
+      dry-schema (~> 1.5, >= 1.5.2)
     e2mmap (0.1.0)
     erubi (1.10.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -96,6 +146,7 @@ GEM
       hpricot
     i18n (1.8.6)
       concurrent-ruby (~> 1.0)
+    iniparse (1.5.0)
     jaro_winkler (1.5.4)
     kramdown (2.3.0)
       rexml
@@ -121,9 +172,23 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    overcommit (0.57.0)
+      childprocess (>= 0.6.3, < 5)
+      iniparse (~> 1.4)
     parallel (1.20.1)
     parser (2.7.2.0)
       ast (~> 2.4.1)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-byebug (3.9.0)
+      byebug (~> 11.0)
+      pry (~> 0.13.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
+    pry-stack_explorer (0.6.0)
+      binding_of_caller (~> 1.0)
+      pry (~> 0.13)
     public_suffix (4.0.6)
     puma (5.1.1)
       nio4r (~> 2.0)
@@ -165,6 +230,8 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    record_with_operator (1.0.1)
+      activerecord
     regexp_parser (1.8.2)
     reverse_markdown (2.0.0)
       nokogiri
@@ -225,12 +292,23 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.1)
+    shoulda-matchers (4.4.1)
+      activesupport (>= 4.2.0)
+    simplecov (0.21.1)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.2)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
     slim-rails (3.2.0)
       actionpack (>= 3.1)
       railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
+    slim_lint (0.20.2)
+      rubocop (>= 0.78.0)
       slim (>= 3.0, < 5.0)
     solargraph (0.40.1)
       backport (~> 1.1)
@@ -295,13 +373,20 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  config
   debase
+  factory_bot_rails
   html2slim
   listen (~> 3.3)
   mysql2 (~> 0.5)
+  overcommit
+  pry-byebug
+  pry-rails
+  pry-stack_explorer
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.0)
+  record_with_operator
   rspec-rails
   rubocop-performance
   rubocop-rails
@@ -309,7 +394,10 @@ DEPENDENCIES
   ruby-debug-ide
   sass-rails (>= 6)
   selenium-webdriver
+  shoulda-matchers
+  simplecov
   slim-rails
+  slim_lint
   solargraph
   spring
   spring-commands-rspec

@@ -7,7 +7,12 @@ AllCops:
     - db/schema.rb
     - tmp/**/*
     - node_modules/**/*
+    - config/**/*
+    - config/*
+    - Gemfile
 
+Metrics/AbcSize:
+  Max: 25
 # ネストが深すぎる
 Metrics/BlockNesting:
   Max: 5

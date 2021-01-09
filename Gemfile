@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -58,6 +56,9 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 ######################## not default(I added) ##########################
+gem 'config'
+gem 'record_with_operator'
+# slim gems
 gem 'html2slim'
 gem 'slim-rails'
 
@@ -65,18 +66,28 @@ group :development, :test do
   # for vscode debugger
   gem 'debase'
   gem 'ruby-debug-ide'
+
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
 end
 
 group :development do
   # auto suggest for vscode
   gem 'solargraph'
+  # git-prehook
+  gem 'overcommit', require: false
   # lint for ruby
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'slim_lint', require: false
 end
 
 group :test do
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
   gem 'spring-commands-rspec'
 end

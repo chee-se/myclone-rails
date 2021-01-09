@@ -1,0 +1,12 @@
+gemfile: Gemfile
+PreCommit:
+  RuboCop:
+    description: "Style check with rubocop"
+    enabled: true
+    on_warn: fail
+    command: ["bundle", "exec", "rubocop"]
+PrePush:
+  RSpec:
+    description: "Auto run unit test with RSpec"
+    enabled: true
+    command: ["./bin/rspec"]
