@@ -1,0 +1,11 @@
+= form_with model: @post, local: true do |f|
+  - if @post.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@post.errors.count, 'error')} prohibited this post from being saved:"
+      ul
+        - @post.errors.full_messages.each do |message|
+          li = message
+  div = f.label :image
+  div = f.file_field :iamge
+
+  .actions = f.submit
