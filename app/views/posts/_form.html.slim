@@ -6,6 +6,7 @@
         - @post.errors.full_messages.each do |message|
           li = message
   div = f.label :image
-  div = f.file_field :iamge
+  div = image_tag @post.image if @post.image.attached?
+  div = f.file_field :image
 
   .actions = f.submit

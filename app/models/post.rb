@@ -3,7 +3,7 @@
 class Post < ApplicationRecord
   has_one_attached :image
 
-  before_save :write_upload_at
+  before_save :write_uploaded_at
 
   private
 
