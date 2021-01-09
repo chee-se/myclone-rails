@@ -5,6 +5,12 @@ PreCommit:
     enabled: true
     on_warn: fail
     command: ["bundle", "exec", "rubocop"]
+
+  SlimLint:
+    description: "Style check with slim-lint"
+    enabled: true
+    on_warn: fail
+    command: ["bundle", "exec", "slim-lint", "app"]
 PrePush:
   RSpec:
     description: "Auto run unit test with RSpec"
