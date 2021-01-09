@@ -8,7 +8,6 @@ AllCops:
     - tmp/**/*
     - node_modules/**/*
     - config/**/*
-    - config/*
     - Gemfile
 
 Metrics/AbcSize:
@@ -16,6 +15,10 @@ Metrics/AbcSize:
 # ネストが深すぎる
 Metrics/BlockNesting:
   Max: 5
+# ブロックが長すぎる
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
 # クラスの行数が多すぎる
 Metrics/ClassLength:
   Enabled: false
