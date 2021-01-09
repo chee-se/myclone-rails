@@ -6,6 +6,7 @@ capybara-*.html
 /db/*.sqlite3-[0-9]*
 /public/system
 /coverage/
+/spec/examples.txt
 /spec/tmp
 *.orig
 rerun.txt
