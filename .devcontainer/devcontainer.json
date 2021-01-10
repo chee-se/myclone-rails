@@ -23,20 +23,22 @@
 
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
-    "rebornix.ruby",
-    "misogi.ruby-rubocop",
-    "bung87.vscode-gemfile",
-    "kaiwood.endwise",
-    "aliariff.slim-lint",
-    "sianglim.slim",
-    "bung87.rails",
-    "castwide.solargraph",
-    "hridoy.rails-snippets",
-    "aki77.rails-db-schema",
-    "sporto.rails-go-to-spec",
-    "noku.rails-run-spec-vscode",
-    "miguel-savignano.ruby-symbols"
-  ],
+	"rebornix.ruby",
+	"misogi.ruby-rubocop",
+	"bung87.vscode-gemfile",
+	"kaiwood.endwise",
+	"aliariff.slim-lint",
+	"sianglim.slim",
+	"bung87.rails",
+	"castwide.solargraph",
+	"hridoy.rails-snippets",
+	"aki77.rails-db-schema",
+	"sporto.rails-go-to-spec",
+	"noku.rails-run-spec-vscode",
+	"miguel-savignano.ruby-symbols",
+	"svipas.control-snippets",
+	"xabikos.javascriptsnippets"
+],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
