@@ -1,97 +1,11 @@
-- if @post.errors.any?
-  #error_explanation
-    h2 = "#{pluralize(@post.errors.count, 'error')} prohibited this post from being saved:"
-    ul
-      - @post.errors.full_messages.each do |message|
-        li = message
-
-= form_with model: @post, id: 'post-form' do |f|
-  div = f.label :image
-  div = image_tag @post.image if @post.image.attached?
-  div = f.file_field :image
-
-  .actions = f.submit
-
 #upload-image-card.card
   .head
     p.title Upload your image
     p.notice File should be Jpeg, Png...
   .body
-    .upload-zone
+    #upload-zone
       p.advice Drag & Drop your image here
     |Or
-    button.normal Choose a file
-
-scss:
-  $gray2: #4F4F4F;
-  $gray3: #828282;
-  $gray4: #BDBDBD;
-  * {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: -0.035em;
-  }
-
-  #upload-image-card {
-    box-sizing: border-box;
-    margin: auto;
-    width: 402px;
-    padding: 6px 32px;
-  }
-
-  .card {
-    background: #FFF;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 12px;
-    text-align: center;
-    font-size: 12px;
-    color: $gray4;
-
-    .head {
-      margin: 30px auto;
-      .title {
-        font-size: 18px;
-        color: $gray2;
-      }
-
-      .notice {
-        font-size: 10px;
-        color: $gray3;
-      }
-    }
-
-    .body {
-      margin: 30px auto;
-      .upload-zone {
-        position: relative;
-        margin: 20px auto;
-        height: 219px;
-        border: 1px dashed #97BEF4;
-        box-sizing: border-box;
-        border-radius: 12px;
-
-        p.advice {
-          position: absolute;
-          top: 161px;
-          left: 0;
-          right: 0;
-        }
-      }
-
-      button.normal {
-        display: block;
-        padding: 7px 15px;
-        margin: 20px auto;
-
-        background: #2F80ED;
-        border-radius: 8px;
-        border: none;
-        color: #FFF;
-        font-size: 12px;
-
-        font-family: Noto Sans;
-        font-style: normal;
-      }
-    }
-  }
+    div
+      label.pseudo-button.normal[for="upload-input"] Choose a file
+      input#upload-input[type="file"]

@@ -1,59 +1,64 @@
-import railsFetch from "./rails-fetch";
+import xfetch from "./xfetch";
 
 window.onload = function () {
-  const postForm = document.querySelector("#post-form");
-  const postImageInput = document.querySelector("#post_image");
+  const uploadZone = document.querySelector("#upload-zone");
+  const uploadInput = document.querySelector("#upload-input");
   const body = document.querySelector("body");
 
-  // 画像フォームが変更された場合の処理
-  postImageInput.addEventListener("change", (e) => {
-    const imageFiles = postImageInput.files;
+  // ボタンを押下された場合の処理
+  uploadInput.addEventListener("change", (e) => {
+    const imageFiles = uploadInput.files;
     if (!validateImageFiles(imageFiles)) {
       e.preventDefault();
       return;
     }
-    const formData = new FormData();
-    formData.append("post[image]", imageFiles[0]);
-    const parameter = {
-      method: "POST",
-      body: formData,
-    };
-    railsFetch("/posts", parameter)
-      .then((response) => {
-        return res.json();
-      })
-      .then((json) => {
-        displayMessage("アップロードが成功しました。");
-      });
+
+    uploadImage(imageFiles[0]).then((json) => {
+      displayMessage("アップロードが成功しました。");
+    });
   });
 
-  // サブミットボタンが押された場合の処理
-  postForm.addEventListener("submit", (e) => {
+  // 画像がドロップされた時の処理
+  uploadZone.addEventListener("drop", (e) => {
     e.preventDefault();
-    const imageFiles = postImageInput.files;
+    const imageFiles = e.dataTransfer.files;
     if (!validateImageFiles(imageFiles)) {
       return;
     }
 
-    const formData = new FormData(e.target);
+    uploadImage(imageFiles[0], displayMessage).then((json) => {
+      displayMessage("アップロードが成功しました。");
+    });
+  });
+
+  //dragoverイベントでを中止してドロップイベントを取得
+  uploadZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+  uploadZone.addEventListener("dragleave", (e) => {
+    e.preventDefault();
+  });
+
+  // 関数
+  const uploadImage = (imageFile) => {
+    const formData = new FormData();
+    formData.append("post[image]", imageFile);
     const parameter = {
       method: "POST",
       body: formData,
     };
+    return xfetch("/posts.json", parameter).then((response) => {
+      return response.json();
+    });
+  };
 
-    fetch("/posts", parameter)
-      .then((response) => {
-        return res.json();
-      })
-      .then((json) => {
-        displayMessage("アップロードが成功しました。");
-      });
-  });
-
-  // 関数
   const validateImageFiles = (files) => {
     if (files.length == 0) {
       displayErrorMessage("画像ファイルを選択してください。");
+      return false;
+    }
+    if (files.length > 1) {
+      displayErrorMessage("ファイルは一つだけ選択してください。");
       return false;
     }
     if (!files[0].type.includes("image")) {
