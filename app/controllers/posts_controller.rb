@@ -17,8 +17,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    success = @post.save
 
-    if @post.save
+    if request.xhr?
+      render json: { result: success }
+      return
+    end
+
+    if success
       redirect_to @post, notice: 'Post was successfully created.'
     else
       render :new
