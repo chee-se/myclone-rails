@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @posted = Post.find(34)
   end
 
   def edit; end

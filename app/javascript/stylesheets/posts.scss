@@ -13,6 +13,11 @@ $gray4: #bdbdbd;
   text-align: center;
 }
 
+#upload-image-processing {
+  width: 400px;
+  padding-bottom: 13px;
+}
+
 .card {
   box-sizing: border-box;
   margin: 30px auto;
@@ -27,6 +32,7 @@ $gray4: #bdbdbd;
   .head {
     margin: 30px auto;
     .title {
+      margin-top: 0.2em;
       font-size: 18px;
       color: $gray2;
     }
