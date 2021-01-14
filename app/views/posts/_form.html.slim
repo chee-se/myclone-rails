@@ -1,3 +1,15 @@
+#upload-image-complete.card
+  .head
+    i.material-icons.checked check_circle
+    p.title Uploade Successfully!
+  .body
+    #post-image-wrapper
+      = image_tag(@posted.image)
+    .input-copy-wrapper
+      input[type="text" value="#{url_for @posted.image}" readonly]
+      button Copy Link
+    // receive url with json (url_for(post.image))
+
 #upload-image.card
   .head
     p.title Upload your image
@@ -10,50 +22,77 @@
       label.pseudo-button.normal[for="upload-input"] Choose a file
       input#upload-input[type="file"]
 
-#uploading-image.card
+#upload-image-processing.card
   .head
     p.title Uploading...
   .body
     .indicator
 
 scss:
-  #uploading-image {
+  $green1: #219653;
+  $gray2: #4f4f4f;
+  $gray3: #828282;
+  $gray4: #bdbdbd;
+
+  #upload-image-complete {
     width: 400px;
-    padding-bottom: 13px;
+    text-align: center;
+  }
+  .head {
+    i.material-icons {
+      font-size: 35px;
+      &.checked {
+        color: $green1;
+      }
+    }
+  }
+  #post-image-wrapper {
+    margin: 30px auto;
+    border-radius: 12px;
+    overflow: hidden;
   }
 
-  .indicator {
+  .input-copy-wrapper {
     position: relative;
-    height: 6px;
-    width: 349px;
-    margin: 10px auto;
+    height: 42px;
 
-    background: #F2F2F2;
+    input[readonly] {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      padding-right: 100px;
+      text-overflow: ellipsis;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      height: 38px;
+      margin: 2px;
+    }
+  }
+
+  input {
+    box-sizing: border-box;
+    height: 42px;
+    padding: 0 7px;
+    border: 1px solid #E0E0E0;
     border-radius: 8px;
-    overflow: hidden;
 
-    &:before {
-      position:absolute;
-      top: 0;
-      left: -20%;
+    background: #F6F8F8;
+    color: $gray2;
+  }
 
-      content: ".";
-      display: block;
-      height: 100%;
-      width: 50%;
+  button {
+    box-sizing: border-box;
+    padding: 7px 15px;
+    border: none;
+    border-radius: 8px;
 
-      font-size: 0;
-      background: #2F80ED;
-      border-radius: 8px;
+    background: #2f80ed;
+    color: #fff;
 
-      animation: 1.5s cubic-bezier(0.6, 0.1, 0.2, 0.8) infinite backwards running indicate;
-    }
-    @keyframes indicate {
-      0% {
-        left: -60%;
-      }
-      100% {
-        left: 110%;
-      }
-    }
+    font-family: Noto Sans;
+    font-style: normal;
+    outline: none;
   }

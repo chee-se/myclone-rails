@@ -1,0 +1,36 @@
+.indicator {
+  position: relative;
+  height: 6px;
+  width: 349px;
+  margin: 10px auto;
+
+  background: #f2f2f2;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: -20%;
+
+    content: ".";
+    display: block;
+    height: 100%;
+    width: 50%;
+
+    font-size: 0;
+    background: #2f80ed;
+    border-radius: 8px;
+
+    animation: 1.5s cubic-bezier(0.6, 0.1, 0.2, 0.8) infinite backwards running
+      indicate;
+  }
+  @keyframes indicate {
+    0% {
+      left: -60%;
+    }
+    100% {
+      left: 110%;
+    }
+  }
+}
