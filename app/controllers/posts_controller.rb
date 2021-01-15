@@ -11,7 +11,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @posted = Post.find(34)
   end
 
   def edit; end
@@ -20,8 +19,9 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     success = @post.save
 
+    sleep 5
     if request.xhr?
-      render json: { result: success }
+      render json: { image_url: url_for(@post.image) }
       return
     end
 

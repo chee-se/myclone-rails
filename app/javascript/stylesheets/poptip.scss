@@ -1,0 +1,25 @@
+.poptip-balloon {
+  position: absolute;
+  padding: 4px;
+  border-radius: 8px;
+  background: #2f80ed;
+  color: white;
+  font-size: 0.7em;
+  z-index: 1;
+  opacity: 0;
+  animation: 4s linear normal forwards running fade-in-out;
+}
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

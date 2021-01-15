@@ -1,9 +1,20 @@
 import xfetch from "./xfetch";
+import poptip from "./poptip";
 
 window.onload = function () {
   const uploadZone = document.querySelector("#upload-zone");
   const uploadInput = document.querySelector("#upload-input");
-  const body = document.querySelector("body");
+  const imageUrlInput = document.querySelector("#image-url");
+  const copyLinkButton = document.querySelector(".copy-link");
+  const postImageWrapper = document.querySelector("#post-image-wrapper");
+
+  const uploadImageCard = document.querySelector("#upload-image");
+  const uploadImageProcessingCard = document.querySelector(
+    "#upload-image-processing"
+  );
+  const uploadImageCompleteCard = document.querySelector(
+    "#upload-image-complete"
+  );
 
   // ボタンを押下された場合の処理
   uploadInput.addEventListener("change", (e) => {
@@ -12,10 +23,7 @@ window.onload = function () {
       e.preventDefault();
       return;
     }
-
-    uploadImage(imageFiles[0]).then((json) => {
-      displayMessage("アップロードが成功しました。");
-    });
+    uploadAndProcess(imageFiles[0]);
   });
 
   // 画像がドロップされた時の処理
@@ -25,10 +33,7 @@ window.onload = function () {
     if (!validateImageFiles(imageFiles)) {
       return;
     }
-
-    uploadImage(imageFiles[0], displayMessage).then((json) => {
-      displayMessage("アップロードが成功しました。");
-    });
+    uploadAndProcess(imageFiles[0]);
   });
 
   //dragoverイベントでを中止してドロップイベントを取得
@@ -39,6 +44,23 @@ window.onload = function () {
     e.preventDefault();
   });
 
+  // ツールチップを設定
+  poptip(copyLinkButton, (e, tip) => {
+    const input = e.target.previousElementSibling;
+    navigator.clipboard
+      .writeText(input.value)
+      .then(() => (tip.innerHTML = "Copied!"));
+  });
+
+  function uploadAndProcess(imageFile) {
+    toggleCard(uploadImageCard, uploadImageProcessingCard);
+    uploadImage(imageFile).then((json) => {
+      imageUrlInput.value = json.image_url;
+      postImageWrapper.firstChild.src = json.image_url;
+      toggleCard(uploadImageProcessingCard, uploadImageCompleteCard);
+    });
+  }
+
   // 関数
   const uploadImage = (imageFile) => {
     const formData = new FormData();
@@ -47,7 +69,7 @@ window.onload = function () {
       method: "POST",
       body: formData,
     };
-    return xfetch("/posts.json", parameter).then((response) => {
+    return xfetch("/posts", parameter).then((response) => {
       return response.json();
     });
   };
@@ -80,6 +102,11 @@ window.onload = function () {
     const p = document.createElement("p");
     p.className = className;
     p.innerText = message;
-    body.appendChild(p);
+    document.body.appendChild(p);
+  };
+
+  const toggleCard = (element1, element2) => {
+    element1.style.display = "none";
+    element2.style.display = "block";
   };
 };
