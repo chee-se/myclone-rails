@@ -1,15 +1,3 @@
-#upload-image-complete.card
-  .head
-    i.material-icons.checked check_circle
-    p.title Uploade Successfully!
-  .body
-    #post-image-wrapper
-      = image_tag(@posted.image)
-    .input-copy-wrapper
-      input[type="text" value="#{url_for @posted.image}" readonly]
-      button Copy Link
-    // receive url with json (url_for(post.image))
-
 #upload-image.card
   .head
     p.title Upload your image
@@ -22,17 +10,29 @@
       label.pseudo-button.normal[for="upload-input"] Choose a file
       input#upload-input[type="file"]
 
-#upload-image-processing.card
+#upload-image-processing.card[style="display: none;"]
   .head
     p.title Uploading...
   .body
     .indicator
+
+#upload-image-complete.card[style="display: none;"]
+  .head
+    i.material-icons.checked check_circle
+    p.title Uploade Successfully!
+  .body
+    #post-image-wrapper
+      = image_tag('')
+    .input-copy-wrapper
+      input#image-url[type="text" value="" readonly]
+      button.copy-link Copy Link
 
 scss:
   $green1: #219653;
   $gray2: #4f4f4f;
   $gray3: #828282;
   $gray4: #bdbdbd;
+  $blue1: #2f80ed;
 
   #upload-image-complete {
     width: 400px;
@@ -54,11 +54,8 @@ scss:
 
   .input-copy-wrapper {
     position: relative;
-    height: 42px;
 
     input[readonly] {
-      position: absolute;
-      left: 0;
       width: 100%;
       padding-right: 100px;
       text-overflow: ellipsis;
@@ -89,10 +86,11 @@ scss:
     border: none;
     border-radius: 8px;
 
-    background: #2f80ed;
-    color: #fff;
+    background: $blue1;
+    outline: none;
+    cursor: pointer;
 
+    color: #fff;
     font-family: Noto Sans;
     font-style: normal;
-    outline: none;
   }

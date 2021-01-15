@@ -1,6 +1,7 @@
 $gray2: #4f4f4f;
 $gray3: #828282;
 $gray4: #bdbdbd;
+$blue1: #2f80ed;
 * {
   font-family: Poppins;
   font-style: normal;
@@ -75,19 +76,20 @@ $gray4: #bdbdbd;
     label.pseudo-button {
       display: inline-block;
       padding: 7px 15px;
-
-      background: #2f80ed;
-      border-radius: 8px;
       border: none;
+      border-radius: 8px;
+
+      background: $blue1;
+      cursor: pointer;
+
       color: #fff;
       font-size: 12px;
-
       font-family: Noto Sans;
       font-style: normal;
     }
 
     .normal {
-      background: #2f80ed;
+      background: $blue1;
       color: #fff;
     }
   }
