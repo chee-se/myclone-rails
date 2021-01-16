@@ -17,6 +17,7 @@ module App
       g.test_framework :rspec
     end
 
+    config.active_storage.routes_prefix = '/storage'
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
