@@ -23,22 +23,22 @@
 
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
-	"rebornix.ruby",
-	"misogi.ruby-rubocop",
-	"bung87.vscode-gemfile",
-	"kaiwood.endwise",
-	"aliariff.slim-lint",
-	"sianglim.slim",
-	"bung87.rails",
-	"castwide.solargraph",
-	"hridoy.rails-snippets",
-	"aki77.rails-db-schema",
-	"sporto.rails-go-to-spec",
-	"noku.rails-run-spec-vscode",
-	"miguel-savignano.ruby-symbols",
-	"svipas.control-snippets",
-	"xabikos.javascriptsnippets"
-],
+    "rebornix.ruby",
+    "misogi.ruby-rubocop",
+    "bung87.vscode-gemfile",
+    "kaiwood.endwise",
+    "aliariff.slim-lint",
+    "sianglim.slim",
+    "bung87.rails",
+    "castwide.solargraph",
+    "hridoy.rails-snippets",
+    "aki77.rails-db-schema",
+    "sporto.rails-go-to-spec",
+    "noku.rails-run-spec-vscode",
+    "miguel-savignano.ruby-symbols",
+    "svipas.control-snippets",
+    "xabikos.javascriptsnippets"
+  ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
@@ -50,7 +50,7 @@
   // "shutdownAction": "none",
 
   // Uncomment the next line to run commands after the container is created - for example installing curl.
-  "postCreateCommand": "apk add --no-cache git"
+  "postCreateCommand": "apk add --no-cache git bash curl; curl https://cli-assets.heroku.com/install.sh | sh"
 
   // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
   // "remoteUser": "vscode"
