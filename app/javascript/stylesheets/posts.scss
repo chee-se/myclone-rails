@@ -1,7 +1,9 @@
+$green1: #219653;
 $gray2: #4f4f4f;
 $gray3: #828282;
 $gray4: #bdbdbd;
 $blue1: #2f80ed;
+
 * {
   font-family: Poppins;
   font-style: normal;
@@ -17,6 +19,11 @@ $blue1: #2f80ed;
 #upload-image-processing {
   width: 400px;
   padding-bottom: 13px;
+}
+
+#upload-image-complete {
+  width: 400px;
+  text-align: center;
 }
 
 .card {
@@ -41,6 +48,13 @@ $blue1: #2f80ed;
     .notice {
       font-size: 10px;
       color: $gray3;
+    }
+
+    i.material-icons {
+      font-size: 35px;
+      &.checked {
+        color: $green1;
+      }
     }
   }
 
@@ -92,5 +106,54 @@ $blue1: #2f80ed;
       background: $blue1;
       color: #fff;
     }
+  }
+
+  input {
+    box-sizing: border-box;
+    height: 42px;
+    padding: 0 7px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+
+    background: #f6f8f8;
+    color: $gray2;
+  }
+
+  #post-image-wrapper {
+    margin: 30px auto;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .input-copy-wrapper {
+    position: relative;
+
+    input[readonly] {
+      width: 100%;
+      padding-right: 100px;
+      text-overflow: ellipsis;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      height: 38px;
+      margin: 2px;
+    }
+  }
+
+  button {
+    box-sizing: border-box;
+    padding: 7px 15px;
+    border: none;
+    border-radius: 8px;
+
+    background: $blue1;
+    outline: none;
+    cursor: pointer;
+
+    color: #fff;
+    font-family: Noto Sans;
+    font-style: normal;
   }
 }
