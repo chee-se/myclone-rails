@@ -53,3 +53,5 @@ production:
   database: app_production
   username: app
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  ssl_mode: :disabled
+  sslverify: false
