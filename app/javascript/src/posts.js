@@ -1,7 +1,7 @@
 import xfetch from "./xfetch";
 import poptip from "./poptip";
 
-window.onload = function () {
+document.addEventListener("turbolinks:load", function () {
   const uploadZone = document.querySelector("#upload-zone");
   const uploadInput = document.querySelector("#upload-input");
   const imageUrlInput = document.querySelector("#image-url");
@@ -109,4 +109,4 @@ window.onload = function () {
     element1.style.display = "none";
     element2.style.display = "block";
   };
-};
+});
